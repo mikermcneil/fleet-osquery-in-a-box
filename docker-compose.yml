@@ -1,0 +1,81 @@
+version: '3.7'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: es01
+    environment:
+      - node.name=es01
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kib01:
+    image: docker.elastic.co/kibana/kibana:7.5.1
+    container_name: kib01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://es01:9200
+      ELASTICSEARCH_HOSTS: http://es01:9200
+
+  ls01:
+    image: docker.elastic.co/logstash/logstash:7.5.1
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - fleet_logs:/var/log/osquery
+
+  mysql01:
+    image: mysql:5.7
+    volumes:
+      - .:/data
+    command: mysqld --datadir=/tmp/data --event-scheduler=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: fleet
+      MYSQL_USER: fleet
+      MYSQL_PASSWORD: fleet
+    ports:
+      - "3306:3306"
+
+  redis01:
+    image: redis:3.2.4
+    ports:
+      - "6379:6379"
+
+  fleet01:
+    image: kolide/fleet:latest
+    command: sh -c "/usr/bin/fleet prepare db --no-prompt && /usr/bin/fleet serve"
+    environment:
+      KOLIDE_MYSQL_ADDRESS: mysql01:3306
+      KOLIDE_MYSQL_DATABASE: fleet
+      KOLIDE_MYSQL_USERNAME: fleet
+      KOLIDE_MYSQL_PASSWORD: fleet
+      KOLIDE_REDIS_ADDRESS: redis01:6379
+      KOLIDE_SERVER_ADDRESS: 0.0.0.0:8412
+      KOLIDE_AUTH_JWT_KEY: FdxvIZiar2EQXE3azq30An1YpwcSQSwk
+      KOLIDE_SERVER_CERT: /fleet/osquery/fleet.crt
+      KOLIDE_SERVER_KEY: /fleet/osquery/fleet.key
+      KOLIDE_LOGGING_JSON: 'true'
+      KOLIDE_OSQUERY_STATUS_LOG_PLUGIN: filesystem
+      KOLIDE_FILESYSTEM_STATUS_LOG_FILE: /logs/osqueryd.status.log
+      KOLIDE_OSQUERY_RESULT_LOG_PLUGIN: filesystem
+      KOLIDE_FILESYSTEM_RESULT_LOG_FILE: /logs/osqueryd.results.log
+    depends_on:
+      - mysql01
+      - redis01
+    volumes:
+      - .:/fleet/
+      - fleet_logs:/logs
+    ports:
+      - "8412:8412"
+
+
+volumes:
+  data01:
+    driver: local
+  fleet_logs:
+    driver: local
