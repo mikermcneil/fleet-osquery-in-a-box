@@ -1,6 +1,6 @@
 # Osquery in a Box
 
-This repository is a collection of resources useful for setting up a test environment with osquery, Fleet, and an ELK stack.
+This repository is a collection of resources useful for setting up a test environment with [osquery](https://github.com/osquery/osquery), [Fleet](https://github.com/kolide/fleet), and an [ELK stack](https://github.com/elastic).
 
 ## Requirements
 
@@ -32,3 +32,18 @@ The [`osquery`](./osquery) directory contains a `docker-compose.yml` and additio
 cd osquery
 ENROLL_SECRET=<copy from fleet> docker-compose up
 ```
+
+## Can I run this in production?
+
+This depends on what "production" means to you. There are a number of tradeoffs
+made to simplify this configuration that would not fit the needs for a typical
+production deployment. A partial list:
+
+- The configuration uses a self-signed TLS certificate with a well-known private
+  key (that key is in this repo).
+- The database credentials are well-known (in this repo).
+- Only a single instance of each service is run. There is no failover.
+- All services are run on a single physical/virtual host machine.
+
+Depending on your use-case, this repository may work as an effective starting
+point for a production deployment.
