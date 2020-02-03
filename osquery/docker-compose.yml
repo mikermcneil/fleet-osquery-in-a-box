@@ -7,8 +7,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
@@ -20,8 +20,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
@@ -34,8 +34,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
@@ -48,8 +48,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
@@ -61,8 +61,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
@@ -74,8 +74,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
@@ -87,8 +87,8 @@ services:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
     environment:
-      ENROLL_SECRET: "${ENROLL_SECRET}"
-    command: osqueryd --flagfile=/etc/osquery/osquery.flags
+      ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
+    command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
     ulimits:
       core:
         hard:  1000000000
