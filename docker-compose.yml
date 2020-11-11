@@ -45,7 +45,7 @@ services:
       - "6379:6379"
 
   fleet01:
-    image: kolide/fleet:latest
+    image: fleetdm/fleet:latest
     command: sh -c "/usr/bin/fleet prepare db --no-prompt && /usr/bin/fleet serve"
     environment:
       KOLIDE_MYSQL_ADDRESS: mysql01:3306
