@@ -37,7 +37,7 @@ services:
       - redis01
     volumes:
       - .:/fleet/
-      - fleet_logs:/logs
+      - ./logs:/logs
     ports:
       - "8412:8412"
 
@@ -65,10 +65,8 @@ services:
     image: docker.elastic.co/logstash/logstash:7.5.1
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-      - fleet_logs:/var/log/osquery
+      - ./logs:/var/log/osquery
 
 volumes:
   data01:
-    driver: local
-  fleet_logs:
     driver: local
