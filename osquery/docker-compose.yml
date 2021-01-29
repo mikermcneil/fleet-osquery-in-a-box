@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   ubuntu20-osquery:
-    image: "dactiv/osquery:4.6.0-ubuntu20.04"
+    image: "dactiv/osquery:4.5.1-ubuntu20.04"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
@@ -15,7 +15,7 @@ services:
         soft:  1000000000
 
   ubuntu18-osquery:
-    image: "dactiv/osquery:4.6.0-ubuntu18.04"
+    image: "dactiv/osquery:4.5.1-ubuntu18.04"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
@@ -28,7 +28,7 @@ services:
         soft:  1000000000
 
   ubuntu16-osquery:
-    image: "dactiv/osquery:4.6.0-ubuntu16.04"
+    image: "dactiv/osquery:4.5.1-ubuntu16.04"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
@@ -41,7 +41,7 @@ services:
         soft:  1000000000
 
   ubuntu14-osquery:
-    image: "dactiv/osquery:4.6.0-ubuntu14.04"
+    image: "dactiv/osquery:4.5.1-ubuntu14.04"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
@@ -54,7 +54,7 @@ services:
         soft:  1000000000
 
   centos8-osquery:
-    image: "dactiv/osquery:4.6.0-centos8"
+    image: "dactiv/osquery:4.5.1-centos8"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
@@ -67,7 +67,7 @@ services:
         soft:  1000000000
 
   centos7-osquery:
-    image: "dactiv/osquery:4.6.0-centos7"
+    image: "dactiv/osquery:4.5.1-centos7"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
@@ -80,7 +80,7 @@ services:
         soft:  1000000000
 
   centos6-osquery:
-    image: "dactiv/osquery:4.6.0-centos6"
+    image: "dactiv/osquery:4.5.1-centos6"
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
