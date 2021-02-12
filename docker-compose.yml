@@ -1,4 +1,13 @@
 version: '3.7'
+
+volumes:
+  data01:
+    driver: local
+
+networks:
+  fleet-preview:
+    name: fleet-preview
+
 services:
   mysql01:
     image: mysql:5.7
@@ -10,9 +19,13 @@ services:
       MYSQL_DATABASE: fleet
       MYSQL_USER: fleet
       MYSQL_PASSWORD: fleet
+    networks:
+      - fleet-preview
 
   redis01:
     image: redis:6
+    networks:
+      - fleet-preview
 
   fleet01:
     image: fleetdm/fleet:latest
@@ -40,6 +53,13 @@ services:
       - ./logs:/logs
     ports:
       - "8412:8412"
+    networks:
+      fleet-preview:
+        # Kind of a funny hack, but this allows host.docker.internal to point
+        # to the Fleet server on Linux hosts where host.docker.internal is not
+        # yet added as a host by default in Docker.
+        aliases:
+          - host.docker.internal
 
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
@@ -52,6 +72,8 @@ services:
       - data01:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+    networks:
+      - fleet-preview
 
   kib01:
     image: docker.elastic.co/kibana/kibana:7.5.1
@@ -60,13 +82,13 @@ services:
     environment:
       ELASTICSEARCH_URL: http://es01:9200
       ELASTICSEARCH_HOSTS: http://es01:9200
+    networks:
+      - fleet-preview
 
   ls01:
     image: docker.elastic.co/logstash/logstash:7.5.1
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
       - ./logs:/var/log/osquery
-
-volumes:
-  data01:
-    driver: local
+    networks:
+      - fleet-preview
