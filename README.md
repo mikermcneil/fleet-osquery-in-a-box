@@ -5,6 +5,16 @@ environment with [osquery](https://github.com/osquery/osquery),
 [Fleet](https://github.com/kolide/fleet), and an [ELK
 stack](https://github.com/elastic).
 
+
+> ## Want an easy way to set up osquery?
+> Check out [`fleetctl preview`](https://github.com/fleetdm/fleet#try-fleet), a simple, one-step solution to try out Fleet and osquery.  It works like the tools in this repo, but with more updates and features.
+
+
+-----------------------------------------------------------------------------------------------
+
+## Bugs
+To report a bug or request a feature, [click here](https://github.com/fleetdm/fleet/issues).
+
 ## Requirements
 
 The only requirement for running this test environment is a working installation
