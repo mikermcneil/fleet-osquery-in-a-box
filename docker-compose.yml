@@ -48,6 +48,7 @@ services:
       FLEET_OSQUERY_RESULT_LOG_PLUGIN: filesystem
       FLEET_FILESYSTEM_RESULT_LOG_FILE: /logs/osqueryd.results.log
       FLEET_BETA_SOFTWARE_INVENTORY: 1
+      FLEET_LICENSE_KEY: ${FLEET_LICENSE_KEY}
     depends_on:
       - mysql01
       - redis01
@@ -88,6 +89,7 @@ services:
       FLEET_OSQUERY_STATUS_LOG_PLUGIN: stdout
       FLEET_OSQUERY_RESULT_LOG_PLUGIN: stdout
       FLEET_BETA_SOFTWARE_INVENTORY: 1
+      FLEET_LICENSE_KEY: ${FLEET_LICENSE_KEY}
     depends_on:
       - mysql01
       - redis01
