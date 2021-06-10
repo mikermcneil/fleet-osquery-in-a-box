@@ -29,7 +29,7 @@ services:
   # Normal Fleet server running TLS with a self-signed cert to handle the
   # osquery connections.
   fleet01:
-    image: fleetdm/fleet:latest
+    image: fleetdm/fleet:${FLEET_VERSION:-latest}
     platform: linux/x86_64
     command: sh -c "/usr/bin/fleet prepare db --no-prompt && /usr/bin/fleet serve"
     environment:
@@ -73,7 +73,7 @@ services:
   # This is expected to receive UI requests only and not connections from
   # agents.
   fleet02:
-    image: fleetdm/fleet:latest
+    image: fleetdm/fleet:${FLEET_VERSION:-latest}
     platform: linux/x86_64
     command: sh -c "/usr/bin/fleet prepare db --no-prompt && /usr/bin/fleet serve"
     environment:
