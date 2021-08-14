@@ -39,7 +39,6 @@ services:
       FLEET_MYSQL_PASSWORD: fleet
       FLEET_REDIS_ADDRESS: redis01:6379
       FLEET_SERVER_ADDRESS: 0.0.0.0:8412
-      FLEET_AUTH_JWT_KEY: insecure
       FLEET_SERVER_CERT: /fleet/osquery/fleet.crt
       FLEET_SERVER_KEY: /fleet/osquery/fleet.key
       FLEET_LOGGING_JSON: 'true'
@@ -84,8 +83,8 @@ services:
       FLEET_REDIS_ADDRESS: redis01:6379
       FLEET_SERVER_ADDRESS: 0.0.0.0:1337
       FLEET_SERVER_TLS: 'false'
-      FLEET_AUTH_JWT_KEY: insecure
       FLEET_LOGGING_JSON: 'true'
+      FLEET_SESSION_DURATION: 720h
       FLEET_OSQUERY_STATUS_LOG_PLUGIN: stdout
       FLEET_OSQUERY_RESULT_LOG_PLUGIN: stdout
       FLEET_BETA_SOFTWARE_INVENTORY: 1
