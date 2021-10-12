@@ -85,3 +85,12 @@ production deployment. A partial list:
 
 Depending on your use-case, this repository may work as an effective starting
 point for a production deployment.
+
+## Development
+
+To make changes to this repository:
+
+* Push a PR on a feature/bugfix branch
+* Test `fleetctl preview --preview-config <branch>` with that branch, make sure everything works
+* Once well tested, merge to the `production` branch, at which point every `fleetctl preview` (version 4.5+) users will use it
+* The `master` branch is used by `fleetctl` before version 4.5.0 and should not change anymore except for critical fixes
