@@ -18,6 +18,8 @@ services:
       MYSQL_DATABASE: fleet
       MYSQL_USER: fleet
       MYSQL_PASSWORD: fleet
+    ports:
+      - "3308:3306"
     networks:
       - fleet-preview
 
@@ -49,12 +51,17 @@ services:
       FLEET_BETA_SOFTWARE_INVENTORY: 1
       FLEET_LICENSE_KEY: ${FLEET_LICENSE_KEY}
       FLEET_OSQUERY_LABEL_UPDATE_INTERVAL: 1m
+      FLEET_VULNERABILITIES_CURRENT_INSTANCE_CHECKS: "yes"
+      FLEET_VULNERABILITIES_DATABASES_PATH: /vulndb
+      FLEET_VULNERABILITIES_PERIODICITY: 5m
+      FLEET_LOGGING_DEBUG: 'true'
     depends_on:
       - mysql01
       - redis01
     volumes:
       - .:/fleet/
       - ./logs:/logs
+      - ./vulndb:/vulndb
     ports:
       - "8412:8412"
     networks:
@@ -91,6 +98,7 @@ services:
       FLEET_BETA_SOFTWARE_INVENTORY: 1
       FLEET_LICENSE_KEY: ${FLEET_LICENSE_KEY}
       FLEET_OSQUERY_LABEL_UPDATE_INTERVAL: 1m
+      FLEET_VULNERABILITIES_CURRENT_INSTANCE_CHECKS: "no"
     depends_on:
       - mysql01
       - redis01
