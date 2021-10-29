@@ -19,7 +19,7 @@ services:
       MYSQL_USER: fleet
       MYSQL_PASSWORD: fleet
     ports:
-      - "3306:3306"
+      - "3306:3308"
     networks:
       - fleet-preview
 
