@@ -18,6 +18,8 @@ services:
       MYSQL_DATABASE: fleet
       MYSQL_USER: fleet
       MYSQL_PASSWORD: fleet
+    ports:
+      - "3306:3306"
     networks:
       - fleet-preview
 
@@ -52,6 +54,7 @@ services:
       FLEET_VULNERABILITIES_CURRENT_INSTANCE_CHECKS: "yes"
       FLEET_VULNERABILITIES_DATABASES_PATH: /vulndb
       FLEET_VULNERABILITIES_PERIODICITY: 20m
+      FLEET_LOGGING_DEBUG: 'true'
     depends_on:
       - mysql01
       - redis01
