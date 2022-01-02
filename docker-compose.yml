@@ -55,6 +55,9 @@ services:
       FLEET_VULNERABILITIES_DATABASES_PATH: /vulndb
       FLEET_VULNERABILITIES_PERIODICITY: 5m
       FLEET_LOGGING_DEBUG: 'true'
+      # This can be configured for testing purposes but otherwise uses the
+      # typical default of provided.
+      FLEET_OSQUERY_HOST_IDENTIFIER: ${FLEET_OSQUERY_HOST_IDENTIFIER:-provided}
     depends_on:
       - mysql01
       - redis01
@@ -99,6 +102,9 @@ services:
       FLEET_LICENSE_KEY: ${FLEET_LICENSE_KEY}
       FLEET_OSQUERY_LABEL_UPDATE_INTERVAL: 1m
       FLEET_VULNERABILITIES_CURRENT_INSTANCE_CHECKS: "no"
+      # This can be configured for testing purposes but otherwise uses the
+      # typical default of provided.
+      FLEET_OSQUERY_HOST_IDENTIFIER: ${FLEET_OSQUERY_HOST_IDENTIFIER:-provided}
     depends_on:
       - mysql01
       - redis01
