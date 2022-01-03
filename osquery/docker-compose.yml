@@ -11,6 +11,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/ubuntu20-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
@@ -26,6 +27,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/ubuntu18-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
@@ -41,6 +43,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/ubuntu16-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
@@ -56,6 +59,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/ubuntu14-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
@@ -71,6 +75,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/centos8-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
@@ -86,6 +91,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/centos7-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
@@ -101,6 +107,7 @@ services:
     volumes:
       - ./fleet.crt:/etc/osquery/fleet.crt
       - ./example_osquery.flags:/etc/osquery/osquery.flags
+      - ./uuids/centos6-osquery:/sys/class/dmi/id/product_uuid
     environment:
       ENROLL_SECRET: "${ENROLL_SECRET:?ENROLL_SECRET must be set for server authentication}"
     command: osqueryd --flagfile=/etc/osquery/osquery.flags --tls_hostname=${FLEET_SERVER-host.docker.internal:8412}
